@@ -1,4 +1,5 @@
 
+import com.sun.javafx.scene.layout.region.BackgroundImage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
-import javafx.scene.image.Image;
 
 
 public class Main extends Application {
@@ -38,6 +38,7 @@ public class Main extends Application {
 
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("You pressed the Add Pun button");
                 punAdd();
             }
         });
@@ -82,6 +83,7 @@ public class Main extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         punLandia = new Scene(grid, 800, 600);
+        punLandia.getStylesheets().addAll(this.getClass().getResource("styles.css").toExternalForm());
         textDisplay.setFont(new Font(14));
         grid.add(userTextField, 5, 3);
         grid.add(addBtn, 6, 4);
@@ -105,6 +107,7 @@ public class Main extends Application {
         textDisplay.setText("What is the keyword of your pun? (You can have more than one. Please separate each word with a ',')");
         userTextField.clear();
         if(yesBtn.isPressed()) {
+
             userKey = userTextField.getText();
             if(userKey.equals("")){
                 textDisplay.setText("That is not a valid word!");
