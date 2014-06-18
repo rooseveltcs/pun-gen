@@ -1,4 +1,11 @@
-
+/**
+ * Project: PunGen
+ * File: Main.java
+ * @author Nick Trunkey, Michael Hannon
+ * @version 061814
+ *
+ *
+ */
 import com.sun.javafx.scene.layout.region.BackgroundImage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -12,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
 
-
 public class Main extends Application {
     private TextField userTextField = new TextField();
     private Text textDisplay = new Text();
@@ -24,6 +30,10 @@ public class Main extends Application {
         launch(args);
     }
     @Override
+    /**
+     * Starts the program
+     * @param primaryStage sets a base stage for the nodes
+     */
     public void start(Stage primaryStage) {
 
         primaryStage.setTitle("PunGen");
@@ -39,7 +49,8 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("You pressed the Add Pun button");
-                punAdd();
+                textDisplay.setText("Coming soon!");
+                //punAdd();
             }
         });
 
@@ -101,6 +112,8 @@ public class Main extends Application {
         primaryStage.show();
         
     }
+
+    //TODO
     private void punAdd() {
         String userKey = "";
         String userPun = "";
@@ -148,6 +161,11 @@ public class Main extends Application {
 
     }
 
+    //TODO
+    /**
+     * Should rate the pun
+     * @param newPun Rates the pun
+     */
     private void ratePun(Pun newPun) {
         System.out.println("What do you rate this pun? Enter 1(low)-5(high).");
         String tempRate = userTextField.getText();

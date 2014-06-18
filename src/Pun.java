@@ -1,13 +1,16 @@
+/**
+ * Project: PunGen
+ * File: Pun.java
+ * @author Nick Trunkey, Michael Hannon
+ * @version 061814
+ *
+ *
+ */
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-/**
- * Created by Michael Hannon on 4 June 2014.
- * Alpha 2
- * Latest Change: Adding more rating functionality.
- * Last updated: 10 June 2014
- */
 public class Pun {
     private final String keyword;
     private String pun;
@@ -24,6 +27,11 @@ public class Pun {
             pun = punFinder();
         }
     }
+
+    /**
+     * THE Method loads the text file, then extracts the pun and keyword and returns the punBase
+     * @return takes a file and extracts the keyword and pun
+     */
     //Loads the text into the HashMap
     private HashMap<String, String> punBaseLoader()  {
         Scanner input = null;
@@ -43,17 +51,29 @@ public class Pun {
         return punBase;
     }
 
-
+    /**
+     * The method assigns the keyword and pun to Strings
+     * @param keyword Assigns the key word to itself
+     * @param pun Assigns the pun to itself
+     */
     public Pun(String keyword, String pun)  {
         this.keyword = keyword;
         this.pun = pun;
         punBase = punBaseLoader();
     }
 
+    /**
+     * The method is a getter method for accessedPuns
+     * @return the hashmaps that have been accessed by the user
+     */
     public HashMap<String, Integer> getAccessedPuns() {
         return accessedPuns;
     }
 
+    /**
+     * Checks if punBase contains the keyword and returns if so
+     * @return with keyword
+     */
     public String punFinder() {
             if(!punBase.containsKey(keyword)) {
                 return null;
@@ -61,6 +81,9 @@ public class Pun {
         return punBase.get(keyword);
     }
 
+    /**
+     * The method adds the pun the user gives
+     */
     public void punAdder() {
         BufferedWriter bw = null;
         try {
@@ -83,11 +106,20 @@ public class Pun {
             }
         }
     }
+
+    /**
+     * The method creates a new hashmap for the accessedPuns and adds pun and rating to the hashmaps
+     * @param rating
+     */
     public void ratePun(int rating) {
         accessedPuns = new HashMap<String, Integer>();
         accessedPuns.put(pun, rating);
     }
     @Override
+    /**
+     * The method checks for the users input for if it is rating and returns the pun
+     * @return the pun that goes with the keyword
+     */
     public String toString() {
         if(keyword.equals("rating")) {
             return String.format(accessedPuns.toString());
