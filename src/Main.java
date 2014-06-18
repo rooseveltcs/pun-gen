@@ -1,5 +1,4 @@
 
-import com.sun.javafx.scene.layout.region.BackgroundImage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,34 +11,97 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
 
-
 public class Main extends Application {
+//Making of all button variables
+
     private TextField userTextField = new TextField();
     private Text textDisplay = new Text();
     private Button yesBtn = new Button();
     private Button noBtn = new Button();
     private GridPane grid = new GridPane();
+    private GridPane punAddGrid = new GridPane();
     private Scene punLandia;
+    private Scene addPun;
+    private Button nextBtn = new Button();
+    private Button thenBtn = new Button();
+    private Button finallyBtn = new Button();
+    private Button addBtn = new Button();
+    private Button getBtn = new Button();
+    private Stage secondaryStage = new Stage();
+    private GridPane punAddGrid2 = new GridPane();
+    private GridPane punAddGrid3 = new GridPane();
+    private Stage thirdStage = new Stage();
+    private Stage third = new Stage();
+
     public static void main(String[] args) {
         launch(args);
     }
+
     @Override
-    public void start(Stage primaryStage) {
-
+    public void start(final Stage primaryStage) {
         primaryStage.setTitle("PunGen");
-        final Button addBtn = new Button();
-        final Button getBtn = new Button();
-
-
         addBtn.setText("Add Pun");
         yesBtn.setText("Yes");
         noBtn.setText("No");
-        addBtn.setOnAction(new EventHandler<ActionEvent>() {
-
+        addBtn.setOnAction(new EventHandler<ActionEvent>() { //button to initialize adding a new pun
+            public void handle(ActionEvent event) {
+                primaryStage.hide();
+                System.out.println("You pressed the Add Pun button");
+                punAddGrid.setAlignment(Pos.CENTER);
+                punAddGrid.setHgap(10);
+                punAddGrid.setVgap(10);
+                punAddGrid.setPadding(new Insets(25, 25, 25, 25));
+                addPun = new Scene(grid, 300, 100);
+                Text punDisplay = new Text();
+                punDisplay.setText("Enter the word you wish to add deary");
+                TextField punTextField = new TextField();
+                punAddGrid.add(punTextField, 5, 5);
+                punAddGrid.add(punDisplay, 5, 4);
+                nextBtn.setText("Next");
+                punAddGrid.add(nextBtn, 6, 5);
+                secondaryStage.setScene(addPun);
+                secondaryStage.show(); //Does this
+            }
+        });
+        nextBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("You pressed the Add Pun button");
-                punAdd();
+                secondaryStage.hide();
+                punAddGrid2.setAlignment(Pos.CENTER);
+                punAddGrid2.setHgap(10);
+                punAddGrid2.setVgap(10);
+                punAddGrid2.setPadding(new Insets(25, 25, 25, 25));
+                Scene punAdd2 = new Scene(grid, 300, 100);
+                Text punDisplay = new Text();
+                punDisplay.setText("Enter the pun you wish to add");
+                TextField punTextField = new TextField();
+                punAddGrid2.add(punTextField, 5, 5);
+                punAddGrid2.add(punDisplay, 5, 4);
+                thenBtn.setText("Next");
+                punAddGrid2.add(nextBtn, 6, 5);
+                thirdStage.setScene(punAdd2);
+                thirdStage.show();
+            }
+        });
+
+        thenBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                thirdStage.hide();
+                punAddGrid3.setAlignment(Pos.CENTER);
+                punAddGrid3.setHgap(10);
+                punAddGrid3.setVgap(10);
+                punAddGrid3.setPadding(new Insets(25, 25, 25, 25));
+                Scene punAdd3 = new Scene(grid, 300, 100);
+                Text punDisplay = new Text();
+                punDisplay.setText("Here is your addition, thank you!");
+                TextField punTextField = new TextField();
+                punAddGrid3.add(punTextField, 5, 5);
+                punAddGrid3.add(punDisplay, 5, 4);
+                finallyBtn.setText("Finish");
+                punAddGrid3.add(nextBtn, 6, 5);
+                third.setScene(punAdd3);
+                third.show();
             }
         });
 
